@@ -1,0 +1,44 @@
+{
+    "particles": {
+      "color": {"value": "#edf2f4"},
+      "move": {
+        "speed": 1,
+        "direction": "top",
+        "enable": true
+      },
+      "number": {
+        "density": {"enable": true},
+        "value": 40
+      },
+      "opacity": {
+        "random": {
+          "enable": true,
+          "minimumValue": 0.3
+        },
+        "value": {
+          "min": 0.2,
+          "max": 0.6
+        },
+        "animation": {
+          "speed": 0.5,
+          "minimumValue": 10
+        }
+      },
+      "shape": {
+        "type": "circle"
+      },
+      "size": {
+        "random": {
+          "enable": true,
+          "minimumValue": 5
+        },
+        "value": {
+          "min": 5,
+          "max": 15
+        },
+        "animation": {
+          "minimumValue": 10
+        }
+      }
+    }
+}
