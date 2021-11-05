@@ -1,0 +1,9 @@
+#square {
+    border: solid 2px #e1e5e8;
+    height: 45px;
+    width: 45px;
+}
+
+.occupied {
+    background-color: tomato;
+}

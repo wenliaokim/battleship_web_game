@@ -8,14 +8,13 @@ h1 {
   font-family: 'Press Start 2P', cursive;
   font-size: 2.5em;
   color: white;
+  text-shadow: -3px 4px #0866c4;
+  
 }
 
 body {
-  /* margin: 0;
+  margin: 0;
   padding: 0;
-  height:100vh; */
-  /* background: hsla(221, 59%, 75%, 1); */
-  /* background-color: #104289c8; */
   background: hsla(215, 45%, 41%, 1);
   background: radial-gradient(circle, hsla(215, 45%, 41%, 0.6) 0%, hsla(215, 87%, 26%, 0.7) 100%);
   background: -moz-radial-gradient(circle, hsla(215, 45%, 41%, 0.6) 0%, hsla(215, 87%, 26%, 0.7) 100%);

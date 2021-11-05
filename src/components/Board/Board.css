@@ -1,0 +1,8 @@
+#board {
+    display: grid;
+    grid-template-columns: repeat(10, 48px);
+    grid-template-rows: repeat(10, 48px);
+    background-color: rgba(230, 158, 16, 0.82);
+    /* border: 2px solid white; */
+    /* box-shadow: 0.1em 0.1em 0.1em white; */
+}

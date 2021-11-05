@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+
+.putShipTitle {
+    font-family: 'Secular One', sans-serif;
+    margin-top: 10px;
+    margin-bottom: 30px;    
+    color: #033566;
+}
+
+#normalBoard {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#putShipBoard {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+#ships {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.normal-ai {
+    text-align: center;
+    margin-top: 10px;
+    color: white;
+}
+
+.human {
+    text-align: center;
+    margin-top: 10px;
+    color: white;
+}

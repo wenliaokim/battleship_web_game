@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron');
+
+.gameBoard {
+    margin: 60px 15px 0 15px;
+    font-size: 1.3em;
+    font-family: 'Orbitron', serif;
+}
+
+.reset, .rule {
+    position: absolute;
+    top: 20px;
+    font-size: 1.1em;
+    font-weight: 400;
+    padding: 5px 20px;
+    letter-spacing: normal;
+    background-color: #076bcfca;
+    box-shadow: 0.05em 0.1em 0.1em #002855;
+}
+
+.reset {
+    left: 15px;
+}
+
+.rule {
+    left: 110px;
+}
+
+.rule:hover {
+    box-shadow: 0.3em 0.2em 0.2em #002855;
+    transform: translateX(-0.15em) translateY(-0.25em);
+}
+
+.reset:hover {
+    box-shadow: 0.3em 0.2em 0.2em #002855;
+    transform: translateX(-0.15em) translateY(-0.25em);
+}

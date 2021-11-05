@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap');
+
+.instruction {
+    display: flex;
+    justify-content: center;
+}
+
+
+.instr-box {
+    margin-top: 50px;
+    width: 60%;
+    border: 1px solid white;
+    padding: 30px 40px 10px 40px;
+    background-color: #075db2dd;
+    box-shadow: 0.1em 0.2em 0.1em white;
+    border-radius: 10px;
+}
+
+.instr-box p {
+    color: rgb(224, 218, 218);
+    text-align: left;
+    font-size: 1.1em;
+    font-weight: 100;
+    line-height: 2em;
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+}
+
+.back {
+    text-decoration: underline;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+    font-weight: 700;
+    font-family: 'Work Sans', sans-serif; 
+    color: rgb(224, 218, 218);
+    background: none;
+    border: none;
+}
+
+.back:hover {
+    cursor: pointer;
+    color: #022d57;
+}

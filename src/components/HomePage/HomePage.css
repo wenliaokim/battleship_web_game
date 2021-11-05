@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+
+.Home {
+    display: flex;
+    flex-direction: column;
+    margin-top: 150px;
+    align-items: center;
+}
+
+.button {
+    background-color: #ffbe69bc;
+    background-color: #f1a23ac8;
+    padding: 15px 40px;
+    margin-bottom: 50px;
+    cursor: pointer;
+    border: 1px solid #002855;
+    border-radius: 10px;
+    font-size: 1.3em;
+    font-weight: 700;
+    font-family: 'Secular One', sans-serif;
+    letter-spacing: 0.5em;
+    color: white;
+    box-shadow: 0.1em 0.2em 0.2em #867768;
+    transition: 0.15s;
+}
+
+.button:hover {
+    text-decoration: underline;
+    box-shadow: 0.5em 0.3em 0.3em #917b64;
+    transform: translateX(-0.25em) translateY(-0.35em);
+}
+
+.instr-button {
+    padding: 10px 30px;
+    margin-top: 50px;
+    font-size: 1em;
+    background-color: #0866c4a9;
+    box-shadow: 0.05em 0.1em 0.1em #002855;
+}
+
+.instr-button:hover {
+    box-shadow: 0.3em 0.2em 0.2em #002855;
+    transform: translateX(-0.15em) translateY(-0.25em);
+}
