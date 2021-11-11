@@ -1,6 +1,7 @@
-import React from "react";
 import { useParams, Link, Redirect } from "react-router-dom";
 import { useDispatch } from 'react-redux';
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 import { changeShowRule } from "../../actions/actions";
 import NormalGame from "../NormalGame/NormalGame";
 import FreeGame from "../FreeGame/FreeGame";
@@ -12,17 +13,15 @@ export default function Game(props) {
     const dispatch = useDispatch();
 
     return (
+        // <DndProvider backend={HTML5Backend}>
         <div>
             <Link to="/"><button className="button reset">Reset</button></Link>
-            <button onClick={()=> dispatch(changeShowRule())} 
-                    className="button rule">?
-            </button>
+            <button onClick={()=> dispatch(changeShowRule())} className="button rule">?</button>
             <div className="gameBoard">
                 {(game === 'freegame') ? <FreeGame /> : 
-                ((game === 'normalgame') ? <NormalGame /> : <Redirect to="/"/> )
-                }
+                ((game === 'normalgame') ? <NormalGame /> : <Redirect to="/"/>)}
             </div>
-
         </div>
+        // </DndProvider>
     )
 }

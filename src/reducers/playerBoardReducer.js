@@ -1,3 +1,5 @@
+import { dropBoard } from "./battleshipReducer";
+
 const playerBoard = [
     ['','','','','','','','','',''],
     ['','','','','','','','','',''],
@@ -11,8 +13,10 @@ const playerBoard = [
     ['','','','','','','','','',''],
 ]
 
-export default function(state=playerBoard, action) {
-    let battleship5 = document.querySelector(".battleship5");
-    console.log(battleship5);
+export default function playerBoardReducer(state=playerBoard, action) {
+    if (action.type === "finishDrag") {
+        state = [...dropBoard];
+        return [...state];
+    }
     return state;
 }

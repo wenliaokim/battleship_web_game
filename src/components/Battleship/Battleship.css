@@ -1,0 +1,4 @@
+#ship {
+    display: flex;
+    flex-direction: column;
+}

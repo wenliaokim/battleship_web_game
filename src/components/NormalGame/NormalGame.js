@@ -1,37 +1,86 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
 import Board from '../Board/Board';
-import Square from '../Square/Square';
+import Battleship from '../Battleship/Battleship';
+import BoardForDrop from '../Board/BoardForDrop';
+import { ChangeDir, doneAllDragging, finishDrag } from '../../actions/actions';
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 import './NormalGame.css';
 
+
 export default function NormalGame() {
+
+    const dispatch = useDispatch();
+
     const aiBoard = useSelector((state) => state.aiBoard);
+    const playerBoard = useSelector((state) => state.playerBoard);
+    const battleships = useSelector((state) => state.battleships);
+    const clickedShip = useSelector((state) => state.clickedShip);
+    const isDragAllDone = useSelector(state => state.isDragAllDone);
 
-    const createShip = (length) => {
-        const squareList = [];
-        for (let i = 0; i < length; i++) {
-           squareList.push(<Square squareStatus={'occupied'}/>)
+    const [toDragBattleships, setDragBattships] = useState([]);
+    const [submitAllowed, setSubmitAllowed] = useState(false);
+
+    // To find out the player's battleships that haven't bee dragged to the board (toDragBattleships).
+    // When all battleships are dragged, we allow the submit button to work (change submitAllowed to be true).
+    useEffect(() => {
+        const newList = [];
+        let draggedCount = 0;
+        for (let i = 0; i < 5; i++) {
+            newList.push(
+                <Battleship 
+                    key={`toDragBattleship: id ${i + 1}`}
+                    toHidden={battleships[i].dropped} 
+                    id={battleships[i].id} 
+                    length={battleships[i].length} 
+                    direction={battleships[i].direction}/>)
+            if (battleships[i].dropped) draggedCount++;
         }
-        return squareList;
-    }
+        setDragBattships(newList);
+        (draggedCount === 5) ? setSubmitAllowed(true) : setSubmitAllowed(false);
+    }, [battleships]);
 
-    if (true) {
+    // If a certain battleship on board is clicked, allow the change button to work.
+    const[changeButtonActive, setActive] = useState(false);
+    useEffect(() => {
+        (clickedShip !== -1) ? setActive(true) : setActive(false);
+    }, [clickedShip]);    
+
+
+    // If the submit button is clicked, change the isDragAllDone to be true. 
+    // So we can change the view to the play view.
+    if (!isDragAllDone) {
         return (
+            <DndProvider backend={HTML5Backend}>
             <div>
-                <p className="putShipTitle">Drag to put your battleships</p>
+                <p className="putShipTitle">Drag to put your battleships on board</p>
+                {changeButtonActive 
+                ? <button 
+                    className="button directionButton" 
+                    onClick={() => {dispatch(ChangeDir(clickedShip))}}>
+                    change Direction
+                </button>
+                : <button className="button directionButton disabledButton" disabled={true}>change Direction</button>
+                }
+                {submitAllowed
+                ? <button 
+                    className="button directionButton" 
+                    onClick={() => {
+                        dispatch(finishDrag());
+                        dispatch(doneAllDragging());
+                    }}>OK</button>
+                : <button className="button directionButton disabledButton">OK</button>
+                }
                 <div id="putShipBoard">
-                    <Board />
-                    <div id="ships">
-                        <div className="battleship5">{createShip(5)}</div>
-                        <div>{createShip(4)}</div>
-                        <div>{createShip(3)}</div>
-                        <div>{createShip(3)}</div>
-                        <div>{createShip(2)}</div>
-                    </div>
+                    <BoardForDrop boardStatus={playerBoard}/>
+                    <div id="ships">{toDragBattleships}</div>
                 </div>
             </div>
-
+            </DndProvider>
         );
-    } else {
+    } 
+    else {
         return (
             <div>
                 <div id="normalBoard">
@@ -40,7 +89,7 @@ export default function NormalGame() {
                         <h2 className="normal-ai">AI</h2>
                     </div>
                     <div>
-                        <Board />
+                        <Board boardStatus={playerBoard}/>
                         <h2 className="human">You</h2>
                     </div>
                 </div>

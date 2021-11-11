@@ -3,20 +3,15 @@
 .putShipTitle {
     font-family: 'Secular One', sans-serif;
     margin-top: 10px;
-    margin-bottom: 30px;    
+    margin-bottom: 0;    
     color: #033566;
-}
-
-#normalBoard {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-evenly;
 }
 
 #putShipBoard {
     display: flex;
     justify-content: center;
     gap: 50px;
+    margin-bottom: 20px;
 }
 
 #ships {
@@ -24,6 +19,16 @@
     flex-direction: row;
     justify-content: space-between;
     gap: 10px;
+}
+
+#battleship5 {
+    position: absoulte;
+}
+
+#normalBoard {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .normal-ai {
@@ -36,4 +41,25 @@
     text-align: center;
     margin-top: 10px;
     color: white;
+}
+
+.directionButton {
+    padding: 10px 20px;
+    letter-spacing: normal;
+    font-size: 0.7em;
+    margin: 20px;
+    background-color: rgba(236, 188, 91, 0.838);
+}
+
+.disabledButton {
+    cursor: auto;
+    background-color: rgba(177, 174, 174, 0.865);
+    box-shadow: none;
+}
+
+
+.disabledButton:hover {
+    box-shadow: none;
+    text-decoration: none;
+    transform: none;
 }

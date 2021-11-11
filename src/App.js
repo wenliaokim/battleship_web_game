@@ -1,4 +1,3 @@
-import React, {useState} from 'react';
 import Particles from 'react-tsparticles';
 import particles from './particles.json';
 import { useSelector } from 'react-redux';

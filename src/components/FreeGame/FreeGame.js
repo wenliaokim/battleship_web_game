@@ -1,5 +1,4 @@
-import { useSelector, useDispatch } from 'react-redux';
-import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import Board from '../Board/Board'
 import './FreeGame.css';
 
@@ -15,7 +14,6 @@ export default function FreeGame() {
                     <h2 className="freeAi">AI</h2>
                 </div>
             </div>
-
         </div>
-      ); 
+      );
 }
