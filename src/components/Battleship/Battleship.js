@@ -44,7 +44,6 @@ export default function Battleship({ toHidden, id, length, direction }) {
         }
     }, [isDragging]);
 
-
     // If this battleship has been dropped on the board. make its display be none.
     let returnDiv;
     if (toHidden) {

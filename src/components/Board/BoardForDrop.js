@@ -30,7 +30,7 @@ export default function BoardForDrop({ boardStatus }) {
     // to find out the battleships that have been dropped onto the board.
     const droppedBattleships = [];
     for (let i = 0; i < 5; i++) {
-        if (battleships[i].dropped & !battleships[i].isDragging) {
+        if (battleships[i].dropped) {
             let borderColor = ""
             if (battleships[i].id === clickedShip) {
                 borderColor = "3px solid red";

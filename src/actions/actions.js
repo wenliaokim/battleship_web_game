@@ -49,3 +49,10 @@ export const doneAllDragging = () => {
         type: "dragDone",
     }
 }
+
+export const dropFails = (id) => {
+    return {
+        type: "dropFails",
+        id: id
+    }
+}

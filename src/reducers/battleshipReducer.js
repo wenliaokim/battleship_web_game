@@ -130,11 +130,15 @@ export default function battleshipReducer(state=defaultBattleships, action) {
         return [...state];
     }
 
-    if (action.type === "startDrag") {
-        state[action.id - 1].isDragging = true;
-        return [...state];
-    }
+    // if (action.type === "startDrag") {
+    //     state[action.id - 1].isDragging = true;
+    //     return [...state];
+    // }
 
+    // if (action.type === "dropFails") {
+    //     state[action.id - 1].isDragging = false;
+    //     return [...state];
+    // }
     return state;
 };
 
