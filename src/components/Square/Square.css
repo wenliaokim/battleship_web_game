@@ -7,3 +7,13 @@
 .occupied {
     background-color: tomato;
 }
+
+.attacked {
+    background-image: url(./images/boom.jpg);
+    background-size: cover;
+}
+
+.missed {
+    font-size: 30px;
+    text-align: center;
+}

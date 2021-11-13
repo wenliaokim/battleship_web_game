@@ -9,7 +9,7 @@ export default function Board({ boardStatus }) {
             boardComponent.push((
             <Square 
                 key={ `normal board: i ${i}, j ${j}`}
-                squareStatus={boardStatus[i][j]}
+                squareStatus={boardStatus}
                 i={i} j={j}/>))
         }
     }

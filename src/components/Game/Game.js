@@ -15,7 +15,7 @@ export default function Game(props) {
     return (
         // <DndProvider backend={HTML5Backend}>
         <div>
-            <Link to="/"><button className="button reset">Reset</button></Link>
+            <Link to={window.location.pathname}><button className="button reset">Reset</button></Link>
             <button onClick={()=> dispatch(changeShowRule())} className="button rule">?</button>
             <div className="gameBoard">
                 {(game === 'freegame') ? <FreeGame /> : 

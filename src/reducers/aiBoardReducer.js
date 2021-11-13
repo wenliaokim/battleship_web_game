@@ -1,15 +1,18 @@
-const aiBoard = [
-    ['','','','','','','','','',''],
-    ['','','','','','','','','',''],
-    ['','','','','','','','','',''],
-    ['','','','','','','','','',''],
-    ['','','','','','','','','',''],
-    ['','','','','','','','','',''],
-    ['','','','','','','','','',''],
-    ['','','','','','','','','',''],
-    ['','','','','','','','','',''],
-    ['','','','','','','','','',''],
-]
+const aiState = {
+    aiBoard:[
+                ['','','','','','','','','',''],
+                ['','','','','','','','','',''],
+                ['','','','','','','','','',''],
+                ['','','','','','','','','',''],
+                ['','','','','','','','','',''],
+                ['','','','','','','','','',''],
+                ['','','','','','','','','',''],
+                ['','','','','','','','','',''],
+                ['','','','','','','','','',''],
+                ['','','','','','','','','',''],
+            ],
+    ships: 17
+}
 
 const isSpace = (board, i, j, isVertical, length) => {
     if (isVertical) {
@@ -44,7 +47,7 @@ const putBattleship = (board, i, j, isVertical, length) => {
 }
 
 const randomBoard = () => {
-    let board = JSON.parse(JSON.stringify(aiBoard));
+    let board = JSON.parse(JSON.stringify(aiState.aiBoard));
     for (let k = 5; k >= 2; k--) {
         let battshipNum = 1;
         if (k === 3) {
@@ -67,13 +70,25 @@ const randomBoard = () => {
             }
         }
     }
-    return board;
+    return {aiBoard: board, ships: aiState.ships};
 }
 
 export default function aiBoardReducer(state, action) {
     if (state === undefined) {
         state = randomBoard();
         return state;
+    }
+
+    if(action.type == 'boardClick') {
+        const board = state.aiBoard;
+        const value = board[action.x][action.y];
+        if(value == ''){
+            board[action.x][action.y] = 'missed';
+        } else if(value == 'occupied'){
+            board[action.x][action.y] = 'attacked';
+            aiState.ships--;
+        }
+        return {aiBoard: [...board], ships: aiState.ships};
     }
     return state;
 }
