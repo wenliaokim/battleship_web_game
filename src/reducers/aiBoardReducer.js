@@ -11,8 +11,21 @@ const aiState = {
                 ['','','','','','','','','',''],
                 ['','','','','','','','','',''],
             ],
-    ships: 17
+    ships: 17,
 }
+
+let initialState = [
+                    ['','','','','','','','','',''],
+                    ['','','','','','','','','',''],
+                    ['','','','','','','','','',''],
+                    ['','','','','','','','','',''],
+                    ['','','','','','','','','',''],
+                    ['','','','','','','','','',''],
+                    ['','','','','','','','','',''],
+                    ['','','','','','','','','',''],
+                    ['','','','','','','','','',''],
+                    ['','','','','','','','','',''],
+                ];
 
 const isSpace = (board, i, j, isVertical, length) => {
     if (isVertical) {
@@ -70,6 +83,7 @@ const randomBoard = () => {
             }
         }
     }
+    initialState = JSON.parse(JSON.stringify(board));
     return {aiBoard: board, ships: aiState.ships};
 }
 
@@ -79,12 +93,17 @@ export default function aiBoardReducer(state, action) {
         return state;
     }
 
-    if(action.type == 'boardClick') {
+    if(action.type === 'reset') {
+        
+        return {aiBoard: JSON.parse(JSON.stringify(initialState)), ships: aiState.ships}
+    }
+
+    if(action.type === 'boardClick') {
         const board = state.aiBoard;
         const value = board[action.x][action.y];
-        if(value == ''){
+        if(value === ''){
             board[action.x][action.y] = 'missed';
-        } else if(value == 'occupied'){
+        } else if(value === 'occupied'){
             board[action.x][action.y] = 'attacked';
             aiState.ships--;
         }
