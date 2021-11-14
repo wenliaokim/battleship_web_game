@@ -6,7 +6,7 @@
     font-family: 'Orbitron', serif;
 }
 
-.reset, .rule {
+.reset, .rule, .homepage{
     position: absolute;
     top: 20px;
     font-size: 1.1em;
@@ -23,6 +23,15 @@
 
 .rule {
     left: 110px;
+}
+
+.homepage {
+    right: 20px;
+}
+
+.homepage:hover {
+    box-shadow: 0.3em 0.2em 0.2em #002855;
+    transform: translateX(-0.15em) translateY(-0.25em);
 }
 
 .rule:hover {

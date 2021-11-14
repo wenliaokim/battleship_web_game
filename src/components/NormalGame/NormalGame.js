@@ -6,6 +6,7 @@ import BoardForDrop from '../Board/BoardForDrop';
 import { ChangeDir, doneAllDragging, finishDrag } from '../../actions/actions';
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import { boardClick, playerBoardUpdate } from '../../actions/actions';
 import './NormalGame.css';
 
 
@@ -21,6 +22,14 @@ export default function NormalGame() {
 
     const [toDragBattleships, setDragBattships] = useState([]);
     const [submitAllowed, setSubmitAllowed] = useState(false);
+
+    const aiWinning = aiBoard.ships === 0 ? true : false;
+    const playerWinning = playerBoard.ships === 0 ? true : false;
+
+    function clickAiBoard(i, j) {
+            dispatch(boardClick(i, j));
+            dispatch(playerBoardUpdate());
+    }
 
     // To find out the player's battleships that haven't bee dragged to the board (toDragBattleships).
     // When all battleships are dragged, we allow the submit button to work (change submitAllowed to be true).
@@ -73,7 +82,7 @@ export default function NormalGame() {
                 : <button className="button directionButton disabledButton">OK</button>
                 }
                 <div id="putShipBoard">
-                    <BoardForDrop boardStatus={playerBoard}/>
+                    <BoardForDrop boardStatus={playerBoard.yourBoard}/>
                     <div id="ships">{toDragBattleships}</div>
                 </div>
             </div>
@@ -81,19 +90,35 @@ export default function NormalGame() {
         );
     } 
     else {
-        return (
-            <div>
-                <div id="normalBoard">
-                    <div>
-                        <Board boardStatus={aiBoard}/>
-                        <h2 className="normal-ai">AI</h2>
-                    </div>
-                    <div>
-                        <Board boardStatus={playerBoard}/>
-                        <h2 className="human">You</h2>
+        if(aiWinning){
+            return (
+                <div>
+                    <div class="hasWin"> GAME OVER, YOU WIN!</div>
+                </div>
+            )
+        }
+        else if(playerWinning){
+            return (
+                <div>
+                    <div class="hasWin"> GAME OVER, AI WIN!</div>
+                </div>
+            )
+        } 
+        else {
+            return (
+                <div>
+                    <div id="normalBoard">
+                        <div>
+                            <Board boardStatus={aiBoard.showBoard} onBoardClick={clickAiBoard} normalGameAiBoard={true}/>
+                            <h2 className="normal-ai">AI</h2>
+                        </div>
+                        <div>
+                            <Board boardStatus={playerBoard.yourBoard}/>
+                            <h2 className="human">You</h2>
+                        </div>
                     </div>
                 </div>
-            </div>
-        ); 
+            ); 
+        }
     }
 }

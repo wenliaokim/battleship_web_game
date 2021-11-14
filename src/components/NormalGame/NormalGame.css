@@ -63,3 +63,8 @@
     text-decoration: none;
     transform: none;
 }
+
+.hasWin {
+    font-size: 100px;
+    margin-top: 15%;
+}

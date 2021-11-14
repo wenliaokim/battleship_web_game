@@ -1,5 +1,5 @@
 const aiState = {
-    aiBoard:[
+    showBoard:[
                 ['','','','','','','','','',''],
                 ['','','','','','','','','',''],
                 ['','','','','','','','','',''],
@@ -60,7 +60,7 @@ const putBattleship = (board, i, j, isVertical, length) => {
 }
 
 const randomBoard = () => {
-    let board = JSON.parse(JSON.stringify(aiState.aiBoard));
+    let board = JSON.parse(JSON.stringify(aiState.showBoard));
     for (let k = 5; k >= 2; k--) {
         let battshipNum = 1;
         if (k === 3) {
@@ -84,7 +84,7 @@ const randomBoard = () => {
         }
     }
     initialState = JSON.parse(JSON.stringify(board));
-    return {aiBoard: board, ships: aiState.ships};
+    return {showBoard: board, ships: aiState.ships};
 }
 
 export default function aiBoardReducer(state, action) {
@@ -93,13 +93,20 @@ export default function aiBoardReducer(state, action) {
         return state;
     }
 
+    if(action.type === 'home') {
+        state = randomBoard();
+        aiState.ships = 17;
+        return {showBoard: [...state.showBoard], ships: aiState.ships}
+    }
+
     if(action.type === 'reset') {
-        
-        return {aiBoard: JSON.parse(JSON.stringify(initialState)), ships: aiState.ships}
+        aiState.ships = 17
+        return {showBoard: JSON.parse(JSON.stringify(initialState)), ships: aiState.ships}
     }
 
     if(action.type === 'boardClick') {
-        const board = state.aiBoard;
+      //  console.log('123');
+        const board = state.showBoard;
         const value = board[action.x][action.y];
         if(value === ''){
             board[action.x][action.y] = 'missed';
@@ -107,7 +114,8 @@ export default function aiBoardReducer(state, action) {
             board[action.x][action.y] = 'attacked';
             aiState.ships--;
         }
-        return {aiBoard: [...board], ships: aiState.ships};
+        return {showBoard: [...board], ships: aiState.ships};
     }
+
     return state;
 }

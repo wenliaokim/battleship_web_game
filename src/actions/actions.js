@@ -56,3 +56,29 @@ export const dropFails = (id) => {
         id: id
     }
 }
+
+export const boardClick = (i, j) => {
+    return {
+        type: "boardClick",
+        x: i,
+        y: j
+    }
+}
+
+export const playerBoardUpdate = () => {
+    return  {
+        type: "playerBoardUpdate",
+    }
+}
+
+export const reset = () => {
+    return  {
+        type: "reset",
+    }
+}
+
+export const goHome = () => {
+    return {
+        type: "home"
+    }
+}
