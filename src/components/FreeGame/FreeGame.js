@@ -20,7 +20,7 @@ export default function FreeGame() {
                     winning ? <div class="win"> GAME OVER, YOU WIN!</div> 
                     :
                     <div>
-                    <Board boardStatus={aiBoard.showBoard} onBoardClick={freeClick}/>
+                    <Board boardStatus={aiBoard.showBoard} onBoardClick={freeClick} aiBoard={true}/>
                     <h2 className="freeAi">AI</h2>
                     </div>
                 }

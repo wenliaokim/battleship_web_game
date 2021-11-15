@@ -109,11 +109,11 @@ export default function NormalGame() {
                 <div>
                     <div id="normalBoard">
                         <div>
-                            <Board boardStatus={aiBoard.showBoard} onBoardClick={clickAiBoard} normalGameAiBoard={true}/>
+                            <Board boardStatus={aiBoard.showBoard} onBoardClick={clickAiBoard} aiBoard={true}/>
                             <h2 className="normal-ai">AI</h2>
                         </div>
                         <div>
-                            <Board boardStatus={playerBoard.yourBoard} normalPlayerBoard={true}/>
+                            <Board boardStatus={playerBoard.yourBoard} playerBoard={true}/>
                             <h2 className="human">You</h2>
                         </div>
                     </div>

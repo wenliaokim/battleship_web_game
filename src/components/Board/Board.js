@@ -3,7 +3,7 @@ import Square from '../Square/Square';
 import './Board.css';
 
 
-export default function Board({ boardStatus, onBoardClick, normalGameAiBoard, normalPlayerBoard}) {
+export default function Board({ boardStatus, onBoardClick, aiBoard, playerBoard}) {
 
     const boardComponent = [];
     for(let i = 0; i < 10; i++) {
@@ -12,7 +12,7 @@ export default function Board({ boardStatus, onBoardClick, normalGameAiBoard, no
             <Square 
                 //key={ `normal board: i ${i}, j ${j}`}
                 squareStatus={boardStatus[i][j]}
-                i={i} j={j} onBoardClick={onBoardClick} normalGameAiBoard={normalGameAiBoard} normalPlayerBoard={normalPlayerBoard}/> ))
+                i={i} j={j} onBoardClick={onBoardClick} aiBoard={aiBoard} playerBoard={playerBoard}/> ))
         }
     }
 
