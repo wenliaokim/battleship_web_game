@@ -5,7 +5,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import { changeShowRule } from "../../actions/actions";
 import NormalGame from "../NormalGame/NormalGame";
 import FreeGame from "../FreeGame/FreeGame";
-import { reset, goHome } from "../../actions/actions";
+import { removeLocalStorage } from '../store'
 import "./Game.css";
 
 export default function Game(props) {
@@ -16,7 +16,10 @@ export default function Game(props) {
     return (
         // <DndProvider backend={HTML5Backend}>
         <div>
-            <Link to='/'><button className="button reset" >Reset</button></Link>
+            <Link to='/'><button className="button reset" onClick={()=>{
+                removeLocalStorage();
+                setTimeout(window.location.reload.bind(window.location), 250);
+            }}>Reset</button></Link>
             <button onClick={()=> dispatch(changeShowRule())} className="button rule">?</button>
          
             <div className="gameBoard">

@@ -8,8 +8,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import thunk from "redux-thunk";
 import { applyMiddleware } from "redux"
+import store from './components/store'
 
-const store = createStore(reducers, applyMiddleware(thunk));
+//const store = createStore(reducers, applyMiddleware(thunk));
 
 ReactDOM.render(
     <Provider store={store} >
