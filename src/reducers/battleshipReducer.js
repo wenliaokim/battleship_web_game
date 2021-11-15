@@ -1,11 +1,13 @@
 // top and left represent the css position values of dropped battleships in terms of the board.
+
+import { randomBoard } from "./aiBoardReducer";
+
 // i and j represent the square where the first piece of the battleship is on the board.
 const defaultBattleships = [
     {
         id: 1,
         length: 5,
         dropped: false,
-        isDragging: false,
         direction: "column",
         top: 0,
         left: 0,
@@ -16,7 +18,6 @@ const defaultBattleships = [
         id: 2,
         length: 4,
         dropped: false,
-        isDragging: false,
         direction: "column",
         top: 0,
         left: 0,
@@ -27,7 +28,6 @@ const defaultBattleships = [
         id: 3,
         length: 3,
         dropped: false,
-        isDragging: false,
         direction: "column",
         top: 0,
         left: 0,
@@ -38,7 +38,6 @@ const defaultBattleships = [
         id: 4,
         length: 3,
         dropped: false,
-        isDragging: false,
         direction: "column",
         top: 0,
         left: 0,
@@ -49,7 +48,6 @@ const defaultBattleships = [
         id: 5,
         length: 2,
         dropped: false,
-        isDragging: false,
         direction: "column",
         top: 0,
         left: 0,
@@ -58,8 +56,7 @@ const defaultBattleships = [
     },
 ];
 
-
-export let dropBoard = [
+const defaultDropBoard = [
     ['','','','','','','','','',''],
     ['','','','','','','','','',''],
     ['','','','','','','','','',''],
@@ -72,9 +69,12 @@ export let dropBoard = [
     ['','','','','','','','','',''],
 ];
 
+export let dropBoard;
+
+dropBoard = JSON.parse(JSON.stringify(defaultDropBoard));
+
 export default function battleshipReducer(state=defaultBattleships, action) {
     if (action.type === "dropBattleship" && action.id > 0) {
-        state[action.id - 1].isDragging = false;
         let toDrop = state[action.id - 1];
         let newBoard = JSON.parse(JSON.stringify(dropBoard));
 
@@ -130,15 +130,29 @@ export default function battleshipReducer(state=defaultBattleships, action) {
         return [...state];
     }
 
-    // if (action.type === "startDrag") {
-    //     state[action.id - 1].isDragging = true;
-    //     return [...state];
-    // }
+    if (action.type == "randomlyPutShips") {
+        const newShips = JSON.parse(JSON.stringify(defaultBattleships));
+        const randomInfo = randomBoard();
+        dropBoard = JSON.parse(JSON.stringify(randomInfo.newState.showBoard));
+        const shipsInfo = randomInfo.shipsInfo;
 
-    // if (action.type === "dropFails") {
-    //     state[action.id - 1].isDragging = false;
-    //     return [...state];
-    // }
+        for (let i = 0; i < 5; i++) {
+            let id = 5 - shipsInfo[i].length + shipsInfo[i].num;
+            if (shipsInfo[i].length === 2) id++;
+            newShips[id - 1].dropped = true;
+            newShips[id - 1].top = 49 * shipsInfo[i].i;
+            newShips[id - 1].left = 49 * shipsInfo[i].j;
+            newShips[id - 1].i = shipsInfo[i].i;
+            newShips[id - 1].j = shipsInfo[i].j;
+            if (shipsInfo[i].isVertical) 
+                newShips[id - 1].direction = "column";
+            else 
+                newShips[id - 1].direction = "row";
+        }
+        state = [...newShips];
+        return [...state];
+    }
+
     return state;
 };
 
@@ -152,6 +166,8 @@ export function clickBattleshipReducer(state=-1, action) {
     }
     return state;
 }
+
+
 
 // helper function.
 function isSquareOccupied(board, i, j, direction, length) {
@@ -177,8 +193,11 @@ function isBeyondBoard(board, i, j, direction, length) {
 
 // helper function.
 function cleanBoard(board, i, j, direction, length) {
+
     for (let k = 0; k < length; k++) {
-        if (direction === "column") board[i + k][j] = "";
+        if (direction === "column") {
+            board[i + k][j] = "";
+        }
         else board[i][j + k] = "";
     }
     return board;

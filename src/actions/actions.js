@@ -38,6 +38,12 @@ export const ChangeDir = (id) => {
     }
 }
 
+export const randomlyPut = () => {
+    return {
+        type: "randomlyPutShips",
+    }
+}
+
 export const finishDrag = () => {
     return {
         type: "finishDrag",
@@ -54,5 +60,19 @@ export const dropFails = (id) => {
     return {
         type: "dropFails",
         id: id
+    }
+}
+
+export const boardClick = (i, j) => {
+    return {
+        type: "boardClick",
+        x: i,
+        y: j
+    }
+}
+
+export const playerBoardUpdate = () => {
+    return  {
+        type: "playerBoardUpdate",
     }
 }

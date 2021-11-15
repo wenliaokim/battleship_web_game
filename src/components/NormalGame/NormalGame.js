@@ -1,11 +1,13 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
+import ReactTooltip from "react-tooltip";
 import Board from '../Board/Board';
 import Battleship from '../Battleship/Battleship';
 import BoardForDrop from '../Board/BoardForDrop';
-import { ChangeDir, doneAllDragging, finishDrag } from '../../actions/actions';
+import { ChangeDir, doneAllDragging, finishDrag, randomlyPut } from '../../actions/actions';
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import { boardClick, playerBoardUpdate } from '../../actions/actions';
 import './NormalGame.css';
 
 
@@ -21,6 +23,14 @@ export default function NormalGame() {
 
     const [toDragBattleships, setDragBattships] = useState([]);
     const [submitAllowed, setSubmitAllowed] = useState(false);
+
+    const aiWinning = aiBoard.ships === 0 ? true : false;
+    const playerWinning = playerBoard.ships === 0 ? true : false;
+
+    function clickAiBoard(i, j) {
+            dispatch(boardClick(i, j));
+            dispatch(playerBoardUpdate());
+    }
 
     // To find out the player's battleships that haven't bee dragged to the board (toDragBattleships).
     // When all battleships are dragged, we allow the submit button to work (change submitAllowed to be true).
@@ -47,33 +57,44 @@ export default function NormalGame() {
         (clickedShip !== -1) ? setActive(true) : setActive(false);
     }, [clickedShip]);    
 
-
     // If the submit button is clicked, change the isDragAllDone to be true. 
     // So we can change the view to the play view.
     if (!isDragAllDone) {
         return (
             <DndProvider backend={HTML5Backend}>
-            <div>
+            <div className="drageFunction">
                 <p className="putShipTitle">Drag to put your battleships on board</p>
+                <button className="button dragFunButton" onClick={() => dispatch(randomlyPut())}>Radomly</button>
                 {changeButtonActive 
                 ? <button 
-                    className="button directionButton" 
-                    onClick={() => {dispatch(ChangeDir(clickedShip))}}>
-                    change Direction
+                    className="button dragFunButton" data-tip data-for="changeDirTip"
+                    onClick={() => {dispatch(ChangeDir(clickedShip))}}>change Direction
                 </button>
-                : <button className="button directionButton disabledButton" disabled={true}>change Direction</button>
+                : <button 
+                    className="button dragFunButton disabledButton" 
+                    // disabled={true} 
+                    data-tip data-for="changeDirTip">change Direction
+                </button>
                 }
+                <ReactTooltip id="changeDirTip" place="top" type="light" effect="solid">
+                    Click battleship on board, then click the button. <br />
+                    Only works when there are enough squares in to-change direction for the battleship
+                </ReactTooltip>
                 {submitAllowed
                 ? <button 
-                    className="button directionButton" 
+                    className="button dragFunButton" 
                     onClick={() => {
                         dispatch(finishDrag());
                         dispatch(doneAllDragging());
-                    }}>OK</button>
-                : <button className="button directionButton disabledButton">OK</button>
+                    }}
+                    data-tip data-for="submitTip">submit</button>
+                : <button className="button dragFunButton disabledButton" data-tip data-for="submitTip">submit</button>
                 }
+                <ReactTooltip id="submitTip" place="top" type="light" effect="solid">
+                    When all battleships have been dragged on board, you can click the button to submit.
+                </ReactTooltip>
                 <div id="putShipBoard">
-                    <BoardForDrop boardStatus={playerBoard}/>
+                    <BoardForDrop boardStatus={playerBoard.yourBoard}/>
                     <div id="ships">{toDragBattleships}</div>
                 </div>
             </div>
@@ -81,19 +102,35 @@ export default function NormalGame() {
         );
     } 
     else {
-        return (
-            <div>
-                <div id="normalBoard">
-                    <div>
-                        <Board boardStatus={aiBoard}/>
-                        <h2 className="normal-ai">AI</h2>
-                    </div>
-                    <div>
-                        <Board boardStatus={playerBoard}/>
-                        <h2 className="human">You</h2>
+        if(aiWinning){
+            return (
+                <div>
+                    <div class="hasWin"> GAME OVER, YOU WIN!</div>
+                </div>
+            )
+        }
+        else if(playerWinning){
+            return (
+                <div>
+                    <div class="hasWin"> GAME OVER, AI WIN!</div>
+                </div>
+            )
+        } 
+        else {
+            return (
+                <div>
+                    <div id="normalBoard">
+                        <div>
+                            <Board boardStatus={aiBoard.showBoard} onBoardClick={clickAiBoard} aiBoard={true}/>
+                            <h2 className="normal-ai">AI</h2>
+                        </div>
+                        <div>
+                            <Board boardStatus={playerBoard.yourBoard} playerBoard={true}/>
+                            <h2 className="human">You</h2>
+                        </div>
                     </div>
                 </div>
-            </div>
-        ); 
+            ); 
+        }
     }
 }
