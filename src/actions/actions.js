@@ -70,15 +70,3 @@ export const playerBoardUpdate = () => {
         type: "playerBoardUpdate",
     }
 }
-
-export const reset = () => {
-    return  {
-        type: "reset",
-    }
-}
-
-export const goHome = () => {
-    return {
-        type: "home"
-    }
-}

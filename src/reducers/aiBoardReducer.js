@@ -14,19 +14,6 @@ const aiState = {
     ships: 17,
 }
 
-let initialState = [
-                    ['','','','','','','','','',''],
-                    ['','','','','','','','','',''],
-                    ['','','','','','','','','',''],
-                    ['','','','','','','','','',''],
-                    ['','','','','','','','','',''],
-                    ['','','','','','','','','',''],
-                    ['','','','','','','','','',''],
-                    ['','','','','','','','','',''],
-                    ['','','','','','','','','',''],
-                    ['','','','','','','','','',''],
-                ];
-
 const isSpace = (board, i, j, isVertical, length) => {
     if (isVertical) {
         for (let k = 0; k < length; k++) {
@@ -83,7 +70,6 @@ const randomBoard = () => {
             }
         }
     }
-    initialState = JSON.parse(JSON.stringify(board));
     return {showBoard: board, ships: aiState.ships};
 }
 
@@ -91,17 +77,6 @@ export default function aiBoardReducer(state, action) {
     if (state === undefined) {
         state = randomBoard();
         return state;
-    }
-
-    if(action.type === 'home') {
-        state = randomBoard();
-        aiState.ships = 17;
-        return {showBoard: JSON.parse(JSON.stringify(state.showBoard)), ships: aiState.ships};
-    }
-
-    if(action.type === 'reset') {
-        aiState.ships = 17
-        return {showBoard: JSON.parse(JSON.stringify(initialState)), ships: aiState.ships}
     }
 
     if(action.type === 'boardClick') {

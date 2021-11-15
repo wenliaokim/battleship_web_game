@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import aiBoardReducer from "./aiBoardReducer";
 import { dropBoard } from "./battleshipReducer";
 
@@ -21,18 +20,6 @@ const playerBoard = {
     spotsToHit:[],
 }
 
-let initialState = [
-    ['','','','','','','','','',''],
-    ['','','','','','','','','',''],
-    ['','','','','','','','','',''],
-    ['','','','','','','','','',''],
-    ['','','','','','','','','',''],
-    ['','','','','','','','','',''],
-    ['','','','','','','','','',''],
-    ['','','','','','','','','',''],
-    ['','','','','','','','','',''],
-    ['','','','','','','','','',''],
-];
 
 function calculateSpots() {
     let spots = []
@@ -47,15 +34,9 @@ export default function playerBoardReducer(state=playerBoard, action) {
     if (action.type === "finishDrag") {
         const newBoard = [...dropBoard];
         const spots = calculateSpots(newBoard);
-        initialState = JSON.parse(JSON.stringify(newBoard));
         return {yourBoard: [...newBoard], ships: playerBoard.ships, spotsToHit: [...spots]};
     }
 
-    if(action.type === "reset") {
-        playerBoard.ships = 17;
-        const spots = calculateSpots();
-        return {yourBoard: JSON.parse(JSON.stringify(initialState)), ships: playerBoard.ships, spotsToHit: [...spots]}
-    }
 
     if(action.type === "playerBoardUpdate") {
         const len = state.spotsToHit.length;
