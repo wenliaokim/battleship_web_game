@@ -113,7 +113,7 @@ export default function NormalGame() {
                             <h2 className="normal-ai">AI</h2>
                         </div>
                         <div>
-                            <Board boardStatus={playerBoard.yourBoard}/>
+                            <Board boardStatus={playerBoard.yourBoard} normalPlayerBoard={true}/>
                             <h2 className="human">You</h2>
                         </div>
                     </div>

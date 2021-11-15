@@ -16,14 +16,9 @@ export default function Game(props) {
     return (
         // <DndProvider backend={HTML5Backend}>
         <div>
-            <Link to={window.location.pathname}><button className="button reset" onClick={
-                ()=>dispatch(reset())
-            }>Reset</button></Link>
+            <Link to='/'><button className="button reset" >Reset</button></Link>
             <button onClick={()=> dispatch(changeShowRule())} className="button rule">?</button>
-            <Link to="/" onclick={()=>{
-                dispatch(goHome());
-                window.location.reload()}}>
-                    <button className="button homepage">Home</button></Link>
+         
             <div className="gameBoard">
                 {(game === 'freegame') ? <FreeGame /> : 
                 ((game === 'normalgame') ? <NormalGame /> : <Redirect to="/"/>)}

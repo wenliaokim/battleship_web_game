@@ -96,7 +96,7 @@ export default function aiBoardReducer(state, action) {
     if(action.type === 'home') {
         state = randomBoard();
         aiState.ships = 17;
-        return {showBoard: [...state.showBoard], ships: aiState.ships}
+        return {showBoard: JSON.parse(JSON.stringify(state.showBoard)), ships: aiState.ships};
     }
 
     if(action.type === 'reset') {

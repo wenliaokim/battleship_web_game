@@ -3,10 +3,10 @@ import { useDispatch } from 'react-redux';
 
 export default function Square(props) {
 
-   const {i, j, squareStatus, onBoardClick, normalGameAiBoard} = props;
+   const {i, j, squareStatus, onBoardClick, normalGameAiBoard, normalPlayerBoard} = props;
     const dispatch = useDispatch();
 
-    let squareColor = "";
+    let squareColor = "empty";
     if (squareStatus === 'occupied') {
         squareColor = "occupied";
     }
@@ -26,7 +26,12 @@ export default function Square(props) {
     }
     
     if(normalGameAiBoard) {
-        squareColor = "";
+        squareColor = "empty";
+    }
+
+    if(normalPlayerBoard) {
+        if(squareColor === 'empty')
+            squareColor = "";
     }
 
     return (
