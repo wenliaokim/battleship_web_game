@@ -13,6 +13,7 @@ export default function FreeGame() {
         dispatch(boardClick(i, j));
     };
 
+
     return (
         <div>
             <div id="freeBoard">

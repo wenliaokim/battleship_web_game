@@ -8,7 +8,6 @@ import { ChangeDir, doneAllDragging, finishDrag, randomlyPut } from '../../actio
 import { DndProvider } from "react-dnd";
 import MultiBackend from 'react-dnd-multi-backend';
 import HTML5toTouch from 'react-dnd-multi-backend/dist/esm/HTML5toTouch';
-import { HTML5Backend } from "react-dnd-html5-backend";
 import { boardClick, playerBoardUpdate } from '../../actions/actions';
 import './NormalGame.css';
 
@@ -65,7 +64,6 @@ export default function NormalGame() {
         return (
             // <DndProvider backend={HTML5Backend}>
             <DndProvider backend={MultiBackend} options={HTML5toTouch}>
-            {/* <DndProvider options={HTML5toTouch}> */}
             <div className="drageFunction">
                 <p className="putShipTitle">Drag to put your battleships on board, or click 'randomly'</p>
                 <button className="button dragFunButton" onClick={() => dispatch(randomlyPut())}>Radomly</button>

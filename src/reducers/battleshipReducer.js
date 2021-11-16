@@ -2,6 +2,8 @@
 
 import { randomBoard } from "./aiBoardReducer";
 
+const { innerWidth: width, innerHeight: height } = window;
+
 // i and j represent the square where the first piece of the battleship is on the board.
 const defaultBattleships = [
     {
@@ -97,9 +99,11 @@ export default function battleshipReducer(state=defaultBattleships, action) {
         dropBoard = newBoard;
 
         // change the battleship's attributes.
+        let sideLength;
+        if (width > 600) sideLength = 49;
         state[action.id - 1].dropped = true;
-        state[action.id - 1].top = 49 * action.i;
-        state[action.id - 1].left = 49 * action.j;
+        state[action.id - 1].top = sideLength * action.i;
+        state[action.id - 1].left = sideLength * action.j;
         state[action.id - 1].i = action.i;
         state[action.id - 1].j = action.j;
 
@@ -131,6 +135,8 @@ export default function battleshipReducer(state=defaultBattleships, action) {
     }
 
     if (action.type == "randomlyPutShips") {
+        let sideLength;
+        if (width > 600) sideLength = 49;
         const newShips = JSON.parse(JSON.stringify(defaultBattleships));
         const randomInfo = randomBoard();
         dropBoard = JSON.parse(JSON.stringify(randomInfo.newState.showBoard));
@@ -140,8 +146,8 @@ export default function battleshipReducer(state=defaultBattleships, action) {
             let id = 5 - shipsInfo[i].length + shipsInfo[i].num;
             if (shipsInfo[i].length === 2) id++;
             newShips[id - 1].dropped = true;
-            newShips[id - 1].top = 49 * shipsInfo[i].i;
-            newShips[id - 1].left = 49 * shipsInfo[i].j;
+            newShips[id - 1].top = sideLength * shipsInfo[i].i;
+            newShips[id - 1].left = sideLength * shipsInfo[i].j;
             newShips[id - 1].i = shipsInfo[i].i;
             newShips[id - 1].j = shipsInfo[i].j;
             if (shipsInfo[i].isVertical) 
