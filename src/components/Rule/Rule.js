@@ -9,18 +9,11 @@ export default function Rule({}) {
         <div className="instruction">
             <div className="instr-box">
                 <p>
-                    A game of Battleship is made up of two 10X10 boards, 
-                    one that represents the player’s board and one that represents the opponents.  
-                    At the start of the game, 5 ships are randomly placed on each board 
-                    (one 5X1 ship, one 4X1 ship, two 3X1 ships, and one 2X1 ship).  
+                    Normal game: You vs computer. Each one will have 5 battleships. Click the oppoent's board to try a hit. 
+                    Who first hit all of the oppoent's battleships will be the winner!
                 </p>
                 <p>
-                    During the game, you and an AI will take turns (the player always goes first). 
-                    On your turn, you will select a square on your opponent’s board. 
-                    On your opponent’s turn, the AI will randomly select a square on your grid. 
-                    If you or your opponent hit a ship, then mark that board with a color and symbol.
-                    If you or your opponent miss, then mark a spot on the board to remind the players 
-                    where on the board they have attempted
+                    Free game: Just the computer board. Try to hit all the battleships!
                 </p>
                 <button onClick={()=> dispatch(changeShowRule())} 
                         className="back">Back

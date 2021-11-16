@@ -15,3 +15,10 @@
     color: aliceblue;
     margin-top: 10%;
 }
+
+@media(max-width: 600px) {
+    .hasWin {
+        font-size: 30px;
+        margin-top: 15%;
+    }
+}

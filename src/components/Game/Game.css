@@ -67,4 +67,8 @@
         left: 50px;
     }
 
+    #resetTip, #ruleTip{
+        font-size: 0.5em;
+    }
+
 }
