@@ -100,8 +100,8 @@ export default function battleshipReducer(state=defaultBattleships, action) {
 
         // change the battleship's attributes.
         let sideLength;
-        if (width > 600) sideLength = 49;
-        else sideLength = 32;
+        if (width > 600) sideLength = 46;
+        else sideLength = 30;
         state[action.id - 1].dropped = true;
         state[action.id - 1].top = sideLength * action.i;
         state[action.id - 1].left = sideLength * action.j;
@@ -137,8 +137,8 @@ export default function battleshipReducer(state=defaultBattleships, action) {
 
     if (action.type == "randomlyPutShips") {
         let sideLength;
-        if (width > 600) sideLength = 49;
-        else sideLength = 32;
+        if (width > 600) sideLength = 46;
+        else sideLength = 30;
         const newShips = JSON.parse(JSON.stringify(defaultBattleships));
         const randomInfo = randomBoard();
         dropBoard = JSON.parse(JSON.stringify(randomInfo.newState.showBoard));

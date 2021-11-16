@@ -13,7 +13,7 @@
 #putShipBoard {
     display: flex;
     justify-content: space-between;
-    max-width: 60%;
+    max-width: 50%;
     margin-bottom: 20px;
     margin-left: auto;
     margin-right: auto;

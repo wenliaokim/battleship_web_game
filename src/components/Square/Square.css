@@ -1,7 +1,7 @@
 #square {
     border: solid 2px #e1e5e8;
-    height: 45px;
-    width: 45px;
+    height: 42px;
+    width: 42px;
 }
 
 .occupied {
@@ -29,8 +29,8 @@
 @media(max-width: 600px) {
     #square {
         border: solid 1px #e1e5e8;
-        height: 30px;
-        width: 30px;
+        height: 28px;
+        width: 28px;
     }
 
     .missed {

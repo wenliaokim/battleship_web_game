@@ -8,8 +8,8 @@ export default function dragBattleshipReducer(state=0, action) {
     if (action.type === "startDrag" && action.clickXY && action.topXY) {
         let nthSquare;
         let sideLength;
-        if (width > 600) sideLength = 49;
-        else sideLength = 32;
+        if (width > 600) sideLength = 46;
+        else sideLength = 30;
         if (action.direction === "column") {
             nthSquare = Math.floor((action.clickXY.y - action.topXY.y) / sideLength) + 1;
         } else {
