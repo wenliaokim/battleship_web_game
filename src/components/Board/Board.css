@@ -13,7 +13,7 @@
 @media(max-width: 600px) {
     #board {
         display: grid;
-        grid-template-columns: repeat(10, 17px);
-        grid-template-rows: repeat(10, 17px);
+        grid-template-columns: repeat(10, 32px);
+        grid-template-rows: repeat(10, 32px);
     }
 }

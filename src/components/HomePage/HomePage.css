@@ -45,9 +45,9 @@
 
 @media(max-width: 600px) {
     .button {
-        padding: 5px 10px;
+        padding: 10px 30px;
         letter-spacing: 0.1em;
-        font-size: 0.8em;
-        margin-bottom: 20px;
+        font-size: 1.2em;
+        margin-bottom: 30px;
     }
 }

@@ -29,8 +29,8 @@
 @media(max-width: 600px) {
     #square {
         border: solid 1px #e1e5e8;
-        height: 15px;
-        width: 15px;
+        height: 30px;
+        width: 30px;
     }
 
     .missed {
