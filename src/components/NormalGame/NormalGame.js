@@ -63,7 +63,7 @@ export default function NormalGame() {
         return (
             <DndProvider backend={HTML5Backend}>
             <div className="drageFunction">
-                <p className="putShipTitle">Drag to put your battleships on board</p>
+                <p className="putShipTitle">Drag to put your battleships on board, or click 'randomly'</p>
                 <button className="button dragFunButton" onClick={() => dispatch(randomlyPut())}>Radomly</button>
                 {changeButtonActive 
                 ? <button 

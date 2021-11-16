@@ -7,7 +7,7 @@
     font-family: 'Orbitron', serif;
 }
 
-.reset, .rule, .homepage{
+.reset, .rule, .homepage {
     position: absolute;
     top: 20px;
     font-size: 1.1em;
@@ -47,4 +47,24 @@
 .reset:hover {
     box-shadow: 0.3em 0.2em 0.2em #002855;
     transform: translateX(-0.15em) translateY(-0.25em);
+}
+
+@media(max-width: 600px) {
+    .reset, .rule, .homepage {
+        padding: 5px 6px;
+        letter-spacing: 0.1em;
+        font-size: 0.5em;
+        margin-bottom: 20px;
+    }
+
+    .reset {
+        top: 10px;
+        left: 5px;
+    }
+
+    .rule {
+        top: 10px;
+        left: 50px;
+    }
+
 }

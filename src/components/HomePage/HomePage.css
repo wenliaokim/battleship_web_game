@@ -42,3 +42,12 @@
     box-shadow: 0.3em 0.2em 0.2em #002855;
     transform: translateX(-0.15em) translateY(-0.25em);
 }
+
+@media(max-width: 600px) {
+    .button {
+        padding: 5px 10px;
+        letter-spacing: 0.1em;
+        font-size: 0.8em;
+        margin-bottom: 20px;
+    }
+}

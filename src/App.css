@@ -26,3 +26,9 @@ body {
   top: 0;
   z-index: -1;
 }
+
+@media(max-width: 600px) {
+  h1 {
+    font-size: 1.2em;
+  }
+}

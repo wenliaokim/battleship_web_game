@@ -27,6 +27,7 @@ export default function Game(props) {
             <ReactTooltip id="resetTip" place="right" type="light" effect="solid">
                     click to exit the game and return to the homepage.
             </ReactTooltip>
+
             <button 
                 onClick={()=> dispatch(changeShowRule())} className="button rule"
                 data-tip data-for="ruleTip">?
@@ -34,6 +35,7 @@ export default function Game(props) {
             <ReactTooltip id="ruleTip" place="right" type="light" effect="solid">
                     show game rules
             </ReactTooltip>
+    
             <div className="gameBoard">
                 {(game === 'freegame') ? <FreeGame /> : 
                 ((game === 'normalgame') ? <NormalGame /> : <Redirect to="/"/>)}

@@ -26,10 +26,6 @@
     gap: 10px;
 }
 
-#battleship5 {
-    position: absoulte;
-}
-
 #normalBoard {
     margin-top: 20px;
     display: flex;
@@ -73,3 +69,50 @@
     font-size: 100px;
     margin-top: 15%;
 }
+
+@media(max-width: 600px) {
+    /* .drageFunction {
+        font-size: 1em;
+    } */
+
+    h2 {
+        font-size: 1em;
+    }
+    .putShipTitle {
+        font-size: 0.7em;
+        max-width: 60%;
+        margin-top: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .dragFunButton {
+        padding: 5px 10px;
+        letter-spacing: 0.1em;
+        font-size: 0.5em;
+        margin: 20px 2px 20px 2px;
+    }
+
+    #putShipBoard {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #ships {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 20px;
+        gap: 5px;
+    }
+
+    #normalBoard {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+  }
