@@ -7,6 +7,7 @@ import BoardForDrop from '../Board/BoardForDrop';
 import { ChangeDir, doneAllDragging, finishDrag, randomlyPut } from '../../actions/actions';
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import { TouchBackend } from 'react-dnd-touch-backend';
 import { boardClick, playerBoardUpdate } from '../../actions/actions';
 import './NormalGame.css';
 
@@ -61,7 +62,7 @@ export default function NormalGame() {
     // So we can change the view to the play view.
     if (!isDragAllDone) {
         return (
-            <DndProvider backend={HTML5Backend}>
+            <DndProvider backend={HTML5Backend, TouchBackend}>
             <div className="drageFunction">
                 <p className="putShipTitle">Drag to put your battleships on board, or click 'randomly'</p>
                 <button className="button dragFunButton" onClick={() => dispatch(randomlyPut())}>Radomly</button>
