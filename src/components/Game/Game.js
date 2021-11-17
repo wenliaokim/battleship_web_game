@@ -10,6 +10,7 @@ import "./Game.css";
 export default function Game(props) {
     let params = useParams();
     let game = params.game;
+    
     const dispatch = useDispatch();
 
     return (

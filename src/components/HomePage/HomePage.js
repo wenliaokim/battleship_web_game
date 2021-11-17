@@ -5,6 +5,7 @@ import './HomePage.css';
 
 export default function HomePage() {
     const dispatch = useDispatch();
+    
     return (
         <div className="Home">
             <Link to="/Game/normalgame"><button className="button">Normal Game</button></Link>

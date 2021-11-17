@@ -56,13 +56,6 @@ export const doneAllDragging = () => {
     }
 }
 
-export const dropFails = (id) => {
-    return {
-        type: "dropFails",
-        id: id
-    }
-}
-
 export const boardClick = (i, j) => {
     return {
         type: "boardClick",

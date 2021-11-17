@@ -1,4 +1,4 @@
-import { useSelector, useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Board from '../Board/Board'
 import './FreeGame.css';
 import {boardClick} from '../../actions/actions'
@@ -20,7 +20,7 @@ export default function FreeGame() {
                 { winning 
                 ? <div className="win"> GAME OVER, YOU WIN!</div> 
                 : <div>
-                    <Board boardStatus={aiBoard.showBoard} onBoardClick={freeClick} aiBoard={true}/>
+                    <Board boardStatus={aiBoard.showBoard} onBoardClick={freeClick} isAiBoard={true}/>
                     <h2 className="freeAi">AI</h2>
                 </div>
                 }

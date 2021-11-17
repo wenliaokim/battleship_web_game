@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { changeShowRule } from "../../actions/actions";
 import './Rule.css';
 
-export default function Rule({}) {
+export default function Rule() {
     const dispatch = useDispatch();
 
     return (

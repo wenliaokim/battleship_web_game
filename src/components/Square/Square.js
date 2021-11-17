@@ -1,7 +1,7 @@
 import './Square.css';
 
 export default function Square(props) {
-    const {i, j, squareStatus, onBoardClick, aiBoard, playerBoard} = props;
+    const { i, j, squareStatus, onBoardClick, isAiBoard } = props;
 
     let squareColor = "";
     if (squareStatus === 'occupied') {
@@ -19,7 +19,7 @@ export default function Square(props) {
         return <div id="square" className={squareColor}></div>
     }
     
-    if(aiBoard) {
+    if(isAiBoard) {
         squareColor = "empty";
     }
 

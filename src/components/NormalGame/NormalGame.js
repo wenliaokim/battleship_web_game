@@ -6,6 +6,7 @@ import Battleship from '../Battleship/Battleship';
 import BoardForDrop from '../Board/BoardForDrop';
 import { ChangeDir, doneAllDragging, finishDrag, randomlyPut } from '../../actions/actions';
 import { DndProvider } from "react-dnd";
+// import { HTML5Backend } from 'react-dnd-html5-backend';
 import MultiBackend from 'react-dnd-multi-backend';
 import HTML5toTouch from 'react-dnd-multi-backend/dist/esm/HTML5toTouch';
 import { boardClick, playerBoardUpdate } from '../../actions/actions';
@@ -65,7 +66,7 @@ export default function NormalGame() {
             // <DndProvider backend={HTML5Backend}>
             <DndProvider backend={MultiBackend} options={HTML5toTouch}>
             <div className="drageFunction">
-                <p className="putShipTitle">Drag to put your battleships on board, or click 'randomly'</p>
+                <p className="putShipTitle">Drag to put your battleships on board, or click <b>Randomly</b></p>
                 <button className="button dragFunButton" onClick={() => dispatch(randomlyPut())}>Radomly</button>
                 {changeButtonActive 
                 ? <button 
@@ -123,11 +124,11 @@ export default function NormalGame() {
                 <div>
                     <div id="normalBoard">
                         <div>
-                            <Board boardStatus={aiBoard.showBoard} onBoardClick={clickAiBoard} aiBoard={true}/>
+                            <Board boardStatus={aiBoard.showBoard} onBoardClick={clickAiBoard} isAiBoard={true}/>
                             <h2 className="normal-ai">AI</h2>
                         </div>
                         <div>
-                            <Board boardStatus={playerBoard.yourBoard} playerBoard={true}/>
+                            <Board boardStatus={playerBoard.yourBoard} isAiBoard={false}/>
                             <h2 className="human">You</h2>
                         </div>
                     </div>

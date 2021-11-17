@@ -2,7 +2,7 @@ import Square from '../Square/Square';
 import './Board.css';
 
 
-export default function Board({ boardStatus, onBoardClick, aiBoard, playerBoard }) {
+export default function Board({ boardStatus, onBoardClick, isAiBoard }) {
 
     const boardComponent = [];
     for(let i = 0; i < 10; i++) {
@@ -11,7 +11,7 @@ export default function Board({ boardStatus, onBoardClick, aiBoard, playerBoard 
                 <Square 
                     squareStatus={boardStatus[i][j]}
                     i={i} j={j} onBoardClick={onBoardClick} 
-                    aiBoard={aiBoard} playerBoard={playerBoard}
+                    isAiBoard={isAiBoard}
                 />
             ))
         }

@@ -2,7 +2,7 @@ import { useDrag } from "react-dnd";
 import { useSelector, useDispatch } from 'react-redux';
 import Square from "../Square/Square";
 import { useEffect } from "react";
-import { rmShipOnBoard, startDrag } from "../../actions/actions";
+import { startDrag } from "../../actions/actions";
 import "./Battleship.css";
 
 export default function Battleship({ toHidden, id, length, direction }) {
@@ -47,7 +47,7 @@ export default function Battleship({ toHidden, id, length, direction }) {
     // If this battleship has been dropped on the board. make its display be none.
     let returnDiv;
     if (toHidden) {
-        returnDiv = <div id="ship" style={{display: "none"}}>{createBattleship(length)}</div>
+        returnDiv = <div id="ship" style={{visibility: "hidden"}}>{createBattleship(length)}</div>
     } else {
         returnDiv = 
             <div id="ship" ref={drag} 

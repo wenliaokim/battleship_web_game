@@ -60,7 +60,7 @@ export const randomBoard = () => {
         if (k === 3) {
             battshipNum = 2;
         }
-        while (battshipNum != 0) {
+        while (battshipNum !== 0) {
             let isVertical = Math.random() < 0.5;
             let i;
             let j;

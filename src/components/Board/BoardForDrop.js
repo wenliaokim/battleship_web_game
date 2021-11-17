@@ -1,5 +1,4 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useState, useEffect } from 'react';
 import SquareForDrop from "../Square/SquareForDrop";
 import Battleship from '../Battleship/Battleship';
 import { clickBattleship } from "../../actions/actions";
@@ -21,7 +20,6 @@ export default function BoardForDrop({ boardStatus }) {
         for(let j = 0; j < 10; j++) {
             boardComponent.push((
             <SquareForDrop 
-                // key={`DroppableBoard i ${i}, j ${j}`}
                 squareStatus={boardStatus[i][j]}
                 i={i} j={j}/>))
         }
@@ -41,9 +39,11 @@ export default function BoardForDrop({ boardStatus }) {
                 <div 
                     style={{position:"absolute", top:battleships[i].top, left:battleships[i].left, border:borderColor}}
                     onClick={() => (dispatch(clickBattleship(battleships[i].id)))}>
-                    <Battleship toHidden={false} id={battleships[i].id} 
-                                length={battleships[i].length} 
-                                direction={battleships[i].direction}/>
+                    <Battleship 
+                            key={`toDropBattleship: id ${i + 1}`}
+                            toHidden={false} id={battleships[i].id} 
+                            length={battleships[i].length} 
+                            direction={battleships[i].direction}/>
                 </div>
             )
         }

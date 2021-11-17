@@ -1,10 +1,10 @@
-// top and left represent the css position values of dropped battleships in terms of the board.
 
 import { randomBoard } from "./aiBoardReducer";
 
-const { innerWidth: width, innerHeight: height } = window;
+const { innerWidth: width } = window;
 
 // i and j represent the square where the first piece of the battleship is on the board.
+// top and left represent the css position values of dropped battleships in terms of the board.
 const defaultBattleships = [
     {
         id: 1,
@@ -107,7 +107,6 @@ export default function battleshipReducer(state=defaultBattleships, action) {
         state[action.id - 1].left = sideLength * action.j;
         state[action.id - 1].i = action.i;
         state[action.id - 1].j = action.j;
-
         return [...state];
     }
 
@@ -135,7 +134,7 @@ export default function battleshipReducer(state=defaultBattleships, action) {
         return [...state];
     }
 
-    if (action.type == "randomlyPutShips") {
+    if (action.type === "randomlyPutShips") {
         let sideLength;
         if (width > 600) sideLength = 46;
         else sideLength = 30;

@@ -1,6 +1,5 @@
 
-const { innerWidth: width, innerHeight: height } = window;
-
+const { innerWidth: width } = window;
 
 
 // This is to calculate which square piece on the battleship that the mouse clicked on when we drag a battleship.

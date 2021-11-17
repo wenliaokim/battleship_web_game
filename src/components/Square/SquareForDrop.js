@@ -16,17 +16,11 @@ export default function SquareForDrop({ squareStatus, i, j }) {
 
     // When the square detected that a battleship is dropped above it, 
     // the square will know which battleship is dropped.
-    const [{ isOver, canDrop, didDrop }, drop] = useDrop(() => ({
+    const [, drop] = useDrop(() => ({
         accept: "battleship",
         drop: (item) => {
             setDroppedId(item.id);
-            console.log("aaa");
             },
-        collect: (monitor) => ({
-            isOver: !!monitor.isOver(),
-            canDrop: !!monitor.canDrop(),
-            didDrop: !!monitor.didDrop(),
-            })
     }));
 
     // When a battleship is dropped, we send its id, position info of the first square piece to the reducer.
