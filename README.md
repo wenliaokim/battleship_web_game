@@ -11,7 +11,7 @@ In normal game, player plays with computer. It allows player to put their battle
 
 ![til](./resources/redrag.gif)
 
-![til](./resources/changdir.gif)
+![til](./resources/changedir.gif)
 
 ![til](./resources/random.gif)
 
